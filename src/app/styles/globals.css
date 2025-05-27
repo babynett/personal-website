@@ -1,0 +1,125 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+:root {
+  --background: hsl(48, 20%, 94%);
+  --foreground: hsl(20, 5%, 25%);
+  --card: hsl(42, 11%, 72%);
+  --card-foreground: hsl(20, 5%, 25%);
+  --popover: hsl(48, 20%, 94%);
+  --popover-foreground: hsl(20, 5%, 25%);
+  --primary: hsl(20, 9%, 25%);
+  --primary-foreground: hsl(20, 9%, 25%);
+  --secondary: hsl(42, 11%, 72%);
+  --secondary-foreground: hsl(20, 9%, 25%);
+  --muted: hsl(20, 5%, 52%);
+  --muted-foreground: hsl(20, 9%, 25%);
+  --accent: hsl(42, 11%, 72%);
+  --accent-foreground: hsl(20, 9%, 25%);
+  --destructive: hsl(0, 84%, 60%); /* kept red for alerts */
+  --destructive-foreground: hsl(0, 0%, 100%);
+  --border: hsl(20, 9%, 25%);
+  --input: hsl(20, 9%, 25%);
+  --ring: hsl(15, 52%, 76%);
+  --radius: 0.5rem;
+  --chart-1: hsl(15, 52%, 76%);
+  --chart-2: hsl(42, 11%, 72%);
+  --chart-3: hsl(20, 5%, 52%);
+  --chart-4: hsl(20, 9%, 25%);
+  --chart-5: hsl(48, 20%, 94%);
+  --blending: hard light;
+  --circle-size: 50%;
+}
+
+.dark {
+  --background: hsl(20, 9%, 25%);
+  --foreground: hsl(48, 20%, 94%);
+  --card: hsl(20, 5%, 25%);
+  --card-foreground: hsl(48, 20%, 94%);
+  --popover: hsl(20, 9%, 20%);
+  --popover-foreground: hsl(48, 20%, 94%);
+  --primary: hsl(15, 52%, 76%);
+  --primary-foreground: hsl(20, 9%, 25%);
+  --secondary: hsl(20, 5%, 52%);
+  --secondary-foreground: hsl(48, 20%, 94%);
+  --muted: hsl(20, 9%, 25%);
+  --muted-foreground: hsl(42, 11%, 72%);
+  --accent: hsl(42, 11%, 72%);
+  --accent-foreground: hsl(20, 9%, 25%);
+  --destructive: hsl(0, 62%, 40%);
+  --destructive-foreground: hsl(0, 85%, 97%);
+  --border: hsl(20, 9%, 25%);
+  --input: hsl(20, 9%, 25%);
+  --ring: hsl(15, 52%, 76%);
+  --chart-1: hsl(15, 52%, 76%);
+  --chart-2: hsl(42, 11%, 72%);
+  --chart-3: hsl(20, 5%, 52%);
+  --chart-4: hsl(48, 20%, 94%);
+  --chart-5: hsl(20, 9%, 25%);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply text-foreground;
+    background-color: var(--background);
+    background-repeat: repeat;
+    background-size: cover;
+  }
+
+  .dark body {
+    background-color: hsl(277, 22%, 16%);
+    background-image: radial-gradient(
+        1px 1px at 25px 25px,
+        #ffffff33 1px,
+        transparent 0
+      ),
+      radial-gradient(1px 1px at 75px 75px, #ffffff22 1px, transparent 0);
+    background-size: 100px 100px;
+    background-repeat: repeat;
+  }
+}
