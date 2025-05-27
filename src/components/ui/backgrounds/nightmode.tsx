@@ -1,7 +1,6 @@
 "use client";
 import React, { useEffect, useRef } from "react";
 import { Button } from "../button";
-import BubbleBackground from "./BubbleBackground";
 
 const Nightmode = () => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -48,7 +47,7 @@ const Nightmode = () => {
     ctx.clearRect(0, 0, width, height);
     const starColor = getStarColor();
 
-    for (let star of starsRef.current) {
+    for (const star of starsRef.current) {
       star.x += star.speedX;
       if (star.x > width) star.x = 0;
 
