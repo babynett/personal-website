@@ -1,12 +1,13 @@
 "use client";
-import React, { useEffect, useRef } from "react";
-import { Button } from "../button";
+import React, { useEffect, useRef, useState } from "react";
+import { Button } from "../reusable/button";
 
 const Nightmode = () => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const starsRef = useRef<
     { x: number; y: number; radius: number; speedX: number }[]
   >([]);
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
   // Initialize stars
   const initStars = () => {
@@ -63,29 +64,34 @@ const Nightmode = () => {
   useEffect(() => {
     initStars();
     animateStars();
+
+    const root = document.documentElement;
+    setIsDarkMode(root.classList.contains("dark"));
+
     window.addEventListener("resize", initStars);
     return () => window.removeEventListener("resize", initStars);
   }, []);
 
   const toggleTheme = () => {
-    document.documentElement.classList.toggle("dark");
+    const root = document.documentElement;
+    root.classList.toggle("dark");
+    setIsDarkMode(root.classList.contains("dark"));
   };
 
   return (
     <>
-      <div className="min-h-screen flex flex-col items-center justify-center text-black dark:text-white light-bg dark:dark-bg transition-all duration-500">
-        <h1 className="text-4xl mb-6">Welcome to my cabin!</h1>
+      <div className=" text-black dark:text-white light-bg dark:dark-bg transition-all duration-500">
+        {" "}
         <Button
           onClick={toggleTheme}
-          className="px-4 py-2 bg-gray-800 text-white rounded dark:bg-white dark:text-black"
+          className="px-4 py-2 bg-gray-800 text-white rounded dark:bg-white dark:text-black  hover:cursor-pointer"
         >
-          Explore
+          <p>{isDarkMode ? "Light" : "Dark"} Mode</p>
         </Button>
-
         <canvas
           ref={canvasRef}
           id="stars"
-          className="fixed inset-0 z-[-1] block"
+          className="fixed inset-0 -z-10 w-full h-full pointer-events-none"
         ></canvas>
       </div>
     </>
